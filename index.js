@@ -91,12 +91,15 @@ function verifyToken(req, res, next) {
 //   }
 // });
 
-app.get('/cover-letter/:username', verifyToken, async (req, res) => {
+app.get('/cover-letter/:username',  async (req, res) => {
   try {
     const { username } = req.params;
     if (req.user.role === 'admin' || req.user.username !== username ) {
-      return res.status(403).json({ error: 'Forbidden' });
+      res.status(403).json({ error: 'Forbidden' });
+    } else {
+      res.json("hello")
     }
+
 
     // const user = await User.findOne({ username });
     // if (user) {
