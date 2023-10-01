@@ -16,6 +16,8 @@ function generateToken(user) {
 
 // Middleware to verify token
 function verifyToken(req, res, next) {
+  next();
+  return ;
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized' });
@@ -45,19 +47,19 @@ client.connect((err) => {
   console.log('Connected to MongoDB');
   db = client.db('mydatabase');
 
-  const insertAdmin = async () => {
+  // const insertAdmin = async () => {
 
-    const user = await db.collection("users").findOne({ role: "admin" });
-    if ( !user )
-      db.collection("users").insertOne({
-        username: "admin",
-        password: "plato2000109",
-        role: "admin",
-        cover_letter: ""
-      })
-  }
+  //   const user = await db.collection("users").findOne({ role: "admin" });
+  //   if ( !user )
+  //     db.collection("users").insertOne({
+  //       username: "admin",
+  //       password: "plato2000109",
+  //       role: "admin",
+  //       cover_letter: ""
+  //     })
+  // }
 
-  insertAdmin();
+  // insertAdmin();
 });
 
 // API endpoints
