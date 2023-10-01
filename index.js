@@ -96,8 +96,7 @@ app.post('/verify-password', async (req, res) => {
       res.status(401).json({ error: 'Invalid username or password' });
     }
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ error: 'Failed to verify password' });
+    res.status(500).json({ error: error });
   }
 });
 
