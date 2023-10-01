@@ -118,13 +118,15 @@ app.get('/cover-letter/:username', verifyToken, async (req, res) => {
   }
 });
 
-app.get('/', async (req, res) => {
-  try {
-    res.json("Success");
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve cover letter' });
-  }
-});
+// app.get('/', async (req, res) => {
+//   try {
+//     res.json("Success");
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to retrieve cover letter' });
+//   }
+// });
+
+app.use(express.static('public'));
 
 // Start the server
 app.listen(3000, () => {
