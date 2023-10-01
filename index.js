@@ -76,20 +76,20 @@ function verifyToken(req, res, next) {
 // });
 
 
-// app.post('/verify-password', async (req, res) => {
-//   try {
-//     const { username, password } = req.body;
-//     const user = await User.findOne({ username, password });
-//     if (user) {
-//       const token = generateToken(user);
-//       res.status(200).json({ token });
-//     } else {
-//       res.status(401).json({ error: 'Invalid username or password' });
-//     }
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to verify password' });
-//   }
-// });
+app.post('/verify-password', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username, password });
+    if (user) {
+      const token = generateToken(user);
+      res.status(200).json({ token });
+    } else {
+      res.status(401).json({ error: 'Invalid username or password' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to verify password' });
+  }
+});
 
 // app.get('/cover-letter/:username', verifyToken, async (req, res) => {
 //   try {
