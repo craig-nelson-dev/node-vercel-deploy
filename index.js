@@ -31,25 +31,25 @@ const app = express();
 app.use(bodyParser.json(), cors());
 
 // // Generate a token
-// function generateToken(user) {
-//   return jwt.sign({ id: user._id, role: user.role, username: user.username }, 'your-secret-key', { expiresIn: '1h' });
-// }
+function generateToken(user) {
+  return jwt.sign({ id: user._id, role: user.role, username: user.username }, 'your-secret-key', { expiresIn: '1h' });
+}
 
 // // Middleware to verify token
-// function verifyToken(req, res, next) {
-//   const token = req.headers.authorization;
-//   if (!token) {
-//     return res.status(401).json({ error: 'Unauthorized' });
-//   }
+function verifyToken(req, res, next) {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
-//   jwt.verify(token, 'your-secret-key', (err, decoded) => {
-//     if (err) {
-//       return res.status(401).json({ error: 'Invalid token' });
-//     }
-//     req.user = decoded;
-//     next();
-//   });
-// }
+  jwt.verify(token, 'your-secret-key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+    req.user = decoded;
+    next();
+  });
+}
 
 // // API endpoints
 
