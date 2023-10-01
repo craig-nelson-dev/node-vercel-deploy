@@ -98,12 +98,12 @@ app.get('/cover-letter/:username', verifyToken, async (req, res) => {
       return res.status(403).json({ error: 'Forbidden' });
     }
 
-    const user = await User.findOne({ username });
-    if (user) {
-      res.status(200).json({ cover_letter: user.cover_letter });
-    } else {
-      res.status(404).json({ error: 'User not found' });
-    }
+    // const user = await User.findOne({ username });
+    // if (user) {
+    //   res.status(200).json({ cover_letter: user.cover_letter });
+    // } else {
+    //   res.status(404).json({ error: 'User not found' });
+    // }
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve cover letter' });
   }
