@@ -76,38 +76,38 @@ function verifyToken(req, res, next) {
 // });
 
 
-app.post('/verify-password', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username, password });
-    if (user) {
-      const token = generateToken(user);
-      res.status(200).json({ token });
-    } else {
-      res.status(401).json({ error: 'Invalid username or password' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to verify password' });
-  }
-});
-
-// app.get('/cover-letter/:username', verifyToken, async (req, res) => {
+// app.post('/verify-password', async (req, res) => {
 //   try {
-//     const { username } = req.params;
-//     if (req.user.role === 'admin' || req.user.username !== username ) {
-//       return res.status(403).json({ error: 'Forbidden' });
-//     }
-
-//     const user = await User.findOne({ username });
+//     const { username, password } = req.body;
+//     const user = await User.findOne({ username, password });
 //     if (user) {
-//       res.status(200).json({ cover_letter: user.cover_letter });
+//       const token = generateToken(user);
+//       res.status(200).json({ token });
 //     } else {
-//       res.status(404).json({ error: 'User not found' });
+//       res.status(401).json({ error: 'Invalid username or password' });
 //     }
 //   } catch (error) {
-//     res.status(500).json({ error: 'Failed to retrieve cover letter' });
+//     res.status(500).json({ error: 'Failed to verify password' });
 //   }
 // });
+
+app.get('/cover-letter/:username', verifyToken, async (req, res) => {
+  try {
+    const { username } = req.params;
+    if (req.user.role === 'admin' || req.user.username !== username ) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const user = await User.findOne({ username });
+    if (user) {
+      res.status(200).json({ cover_letter: user.cover_letter });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve cover letter' });
+  }
+});
 
 
 app.get('/', async (req, res) => {
