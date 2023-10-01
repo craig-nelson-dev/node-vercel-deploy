@@ -33,7 +33,7 @@ function verifyToken(req, res, next) {
 }
 
 // Connect to MongoDB
-const uri = 'mongodb://0.0.0.0:27017';
+const uri = "mongodb+srv://vercel-admin-user:i7zA1Uz1IEU0zDOj@cluster0.km3sslk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 let db;
 
