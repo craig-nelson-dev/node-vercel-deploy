@@ -109,6 +109,15 @@ app.get('/cover-letter/:username', verifyToken, async (req, res) => {
   }
 });
 
+
+app.get('/', async (req, res) => {
+  try {
+    res.json("Success");
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve cover letter' });
+  }
+});
+
 // Start the server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
