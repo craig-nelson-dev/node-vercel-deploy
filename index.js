@@ -44,9 +44,24 @@ client.connect((err) => {
   }
   console.log('Connected to MongoDB');
   db = client.db('mydatabase');
+
+  const insertAdmin = async () => {
+
+    const user = await db.collection("users").findOne({ role: "admin" });
+    if ( !user )
+      db.collection("users").insertOne({
+        username: "admin",
+        password: "plato2000109",
+        role: "admin",
+        cover_letter: ""
+      })
+  }
+
+  insertAdmin();
 });
 
 // API endpoints
+
 
 app.post('/users', verifyToken, async (req, res) => {
   try {
@@ -91,8 +106,6 @@ app.get('/cover-letter/:username', verifyToken, async (req, res) => {
     const { username } = req.params;
     if (req.user.role === 'admin' || req.user.username !== username) {
       res.status(403).json({ error: 'Forbidden' });
-    } else {
-      res.json("hello");
     }
 
     const user = await db.collection('users').findOne({ username });
