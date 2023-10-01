@@ -91,28 +91,28 @@ function verifyToken(req, res, next) {
 //   }
 // });
 
-app.get('/cover-letter',  async (req, res) => {
-  try {
-    // const { username } = req.params;
-    // if (req.user.role === 'admin' || req.user.username !== username ) {
-    //   res.status(403).json({ error: 'Forbidden' });
-    // } else {
-    //   res.json("hello")
-    // }
+// app.get('/cover_letter',  async (req, res) => {
+//   try {
+//     // const { username } = req.params;
+//     // if (req.user.role === 'admin' || req.user.username !== username ) {
+//     //   res.status(403).json({ error: 'Forbidden' });
+//     // } else {
+//     //   res.json("hello")
+//     // }
 
-    res.json("hallo")
+//     res.json("hallo")
 
 
-    // const user = await User.findOne({ username });
-    // if (user) {
-    //   res.status(200).json({ cover_letter: user.cover_letter });
-    // } else {
-    //   res.status(404).json({ error: 'User not found' });
-    // }
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to retrieve cover letter' });
-  }
-});
+//     // const user = await User.findOne({ username });
+//     // if (user) {
+//     //   res.status(200).json({ cover_letter: user.cover_letter });
+//     // } else {
+//     //   res.status(404).json({ error: 'User not found' });
+//     // }
+//   } catch (error) {
+//     res.status(500).json({ error: 'Failed to retrieve cover letter' });
+//   }
+// });
 
 
 app.get('/', async (req, res) => {
