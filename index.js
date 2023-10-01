@@ -93,12 +93,14 @@ function verifyToken(req, res, next) {
 
 app.get('/cover-letter/:username',  async (req, res) => {
   try {
-    const { username } = req.params;
-    if (req.user.role === 'admin' || req.user.username !== username ) {
-      res.status(403).json({ error: 'Forbidden' });
-    } else {
-      res.json("hello")
-    }
+    // const { username } = req.params;
+    // if (req.user.role === 'admin' || req.user.username !== username ) {
+    //   res.status(403).json({ error: 'Forbidden' });
+    // } else {
+    //   res.json("hello")
+    // }
+
+    res.json("hallo")
 
 
     // const user = await User.findOne({ username });
