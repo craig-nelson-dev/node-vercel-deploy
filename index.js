@@ -16,8 +16,6 @@ function generateToken(user) {
 
 // Middleware to verify token
 function verifyToken(req, res, next) {
-  next();
-  return ;
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized' });
