@@ -27,8 +27,8 @@ const cors = require("cors");
 //   });
 
 // // Create an Express app
-// const app = express();
-// app.use(bodyParser.json(), cors());
+const app = express();
+app.use(bodyParser.json(), cors());
 
 // // Generate a token
 // function generateToken(user) {
