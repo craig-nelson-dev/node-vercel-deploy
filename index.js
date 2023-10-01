@@ -4,6 +4,7 @@ const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 // Create an Express app
 const app = express();
@@ -125,8 +126,7 @@ app.get('/cover-letter/:username', verifyToken, async (req, res) => {
 //     res.status(500).json({ error: 'Failed to retrieve cover letter' });
 //   }
 // });
-
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server
 app.listen(3000, () => {
