@@ -7,15 +7,15 @@ const cors = require("cors");
 const jwt = require('jsonwebtoken');
 
 // // Create a MongoDB schema for User
-// const userSchema = new mongoose.Schema({
-//   username: String,
-//   password: String,
-//   role: String,
-//   cover_letter: String
-// });
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+  role: String,
+  cover_letter: String
+});
 
-// // Create a User model based on the schema
-// const User = mongoose.model('User', userSchema);
+// Create a User model based on the schema
+const User = mongoose.model('User', userSchema);
 
 // // Connect to MongoDB
 // mongoose.connect('mongodb://0.0.0.0:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true })
