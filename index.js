@@ -1,10 +1,10 @@
 
 // Import required modules
 const express = require('express');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 // // Create a MongoDB schema for User
 // const userSchema = new mongoose.Schema({
