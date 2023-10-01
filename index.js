@@ -28,7 +28,8 @@ mongoose.connect('mongodb://0.0.0.0:27017/mydatabase', { useNewUrlParser: true, 
 
 // // Create an Express app
 const app = express();
-app.use(bodyParser.json(), cors());
+app.use(bodyParser.json());
+app.use(cors())
 
 // // Generate a token
 function generateToken(user) {
@@ -124,6 +125,6 @@ app.get('/', async (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log('Server started on port 3000');
 });
